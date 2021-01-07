@@ -12,4 +12,7 @@ public interface RecipeService {
     Object findById(long anyLong);
 
     RecipeCommand saveRecipeCommand(RecipeCommand command);
+
+    RecipeCommand findCommandById(Long l);
+
 }
