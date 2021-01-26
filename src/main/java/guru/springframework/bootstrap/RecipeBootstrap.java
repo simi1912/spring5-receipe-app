@@ -6,6 +6,7 @@ import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.repositories.UnitOfMeasureRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +18,7 @@ import java.util.Optional;
 
 @Slf4j
 @Component
+@Profile("default")
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     private final CategoryRepository categoryRepository;
@@ -38,6 +40,26 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     }
 
     private List<Recipe> getRecipes() {
+
+//        UnitOfMeasure eachUom = new UnitOfMeasure();
+//        eachUom.setDescription("Each");
+//        unitOfMeasureRepository.save(eachUom);
+//
+//        UnitOfMeasure tableSpoonUom = new UnitOfMeasure();
+//        tableSpoonUom.setDescription("Tablespoon");
+//        unitOfMeasureRepository.save(tableSpoonUom);
+//
+//        UnitOfMeasure teapoonUom = new UnitOfMeasure();
+//        teapoonUom.setDescription("Teaspoon");
+//        unitOfMeasureRepository.save(teapoonUom);
+//
+//        UnitOfMeasure dashUom = new UnitOfMeasure();
+//        dashUom.setDescription("Dash");
+//        unitOfMeasureRepository.save(dashUom);
+//
+//        UnitOfMeasure pintUom = new UnitOfMeasure();
+//        pintUom.setDescription("Cup");
+//        unitOfMeasureRepository.save(pintUom);
 
         List<Recipe> recipes = new ArrayList<>(2);
 
@@ -85,6 +107,14 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         UnitOfMeasure dashUom = dashUomOptional.get();
         UnitOfMeasure pintUom = pintUomOptional.get();
         UnitOfMeasure cupsUom = cupsUomOptional.get();
+
+//        Category americanCategory = new Category();
+//        americanCategory.setDescription("American");
+//        categoryRepository.save(americanCategory);
+//
+//        Category mexicanCategory = new Category();
+//        mexicanCategory.setDescription("Mexican");
+//        categoryRepository.save(mexicanCategory);
 
         //get Categories
         Optional<Category> americanCategoryOptional = categoryRepository.findByDescription("American");
